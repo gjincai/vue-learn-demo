@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<title>vue-todo</title>
+	<!-- <script type="text/javascript" src="../vue.js"></script>
+	<script type="text/javascript" src="./app.js"></script> -->
+</head>
+<body>
+<section class="todovue">
+	<h2>todo_vue</h2>
+	<header class="header">
+		<input type="checkbox" class="toggle-all">
+		<input type="text"
+			   class="new-todo"
+			   autocomplete="off"
+			   placeholder="new a todos"
+			   v-model="newtodo"
+			   v-on:keyup.enter="addTodo">
+	</header>
+	<section class="main">
+		<ul class="todo-list">
+			<li class="todo" v-for="todo in todos">
+				<div class="show">
+					<input type="checkbox" class="toggle-com" v-model="todo.done">
+					<span>{{todo.title}}</span>
+					<button class="delete">delete</button>
+				</div>
+				<input type="text" class="edit">
+			</li>
+		</ul>
+	</section>
+	<footer class="footer">
+		<span class="count"><strong>99</strong>todo left</span>
+	</footer>
+	<ul class="filter">
+		<li><a href="javascript:;">全部</a></li>
+		<li><a href="javascript:;">未完成</a></li>
+		<li><a href="javascript:;">已完成</a></li>
+		<li><a href="javascript:;">删除已完成</a></li>
+	</ul>
+</section>
+<script type="text/javascript" src="../vue-plug/vue.js"></script>
+<script type="text/javascript" src="./app.js"></script>
+</body>
+</html>
