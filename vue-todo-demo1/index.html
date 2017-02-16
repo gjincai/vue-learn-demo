@@ -22,7 +22,8 @@
 	</header>
 	<section class="main">
 		<ul class="todo-list">
-			<li class="todo" v-for="todo in todos">
+			<!-- <li class="todo" v-for="todo in todos"> -->
+			<li class="todo" v-for="todo in filteredTodos">
 				<div class="show">
 					<input type="checkbox" class="toggle-com" v-model="todo.done">
 					<span>{{todo.title}}</span>
@@ -36,9 +37,9 @@
 		<span class="count"><strong>99</strong>todo left</span>
 	</footer>
 	<ul class="filter">
-		<li><a href="javascript:;">全部</a></li>
-		<li><a href="javascript:;">未完成</a></li>
-		<li><a href="javascript:;">已完成</a></li>
+		<li><a href="#/all">全部</a></li>
+		<li><a href="#/undone">未完成</a></li>
+		<li><a href="#/done">已完成</a></li>
 		<li><a href="javascript:;">删除已完成</a></li>
 	</ul>
 </section>

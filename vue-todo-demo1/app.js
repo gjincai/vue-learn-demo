@@ -29,12 +29,44 @@ var todoDb = {
 // ];
 // todoDb.save(todos);
 console.log(todoDb.fetch());
+//过滤筛选
+var filters = {
+	all: function(todos){
+		return todos;
+	},
+	undone: function(todos){
+		return todos.filter(function(todo){
+			return !todo.done;
+		});
+	},
+	done: function(todos){
+		return todos.filter(function(todo){
+			return todo.done;
+		});
+	},
+	hashSet: function(){
+		//获取当前url的hash值；若存在，则将该值赋给vue的app.visibility;
+		//若不存在，则设置默认值all
+		var visibilityUrl = window.location.hash.replace(/#\/?/, '');
+		if(filters[visibilityUrl]){
+			app.visibility = visibilityUrl;
+			console.log(app.visibility);
+		}else{
+			window.location.hash = '';
+			app.visibility = 'all';
+			// console.log(app.visibility);
+		}
+	}
+};
+
+console.log(filters.undone(todoDb.fetch()));
 //渲染模板
 var app = new Vue({
 	el: '.todovue',
 	data: {
 		todos: todoDb.fetch(),
-		newtodo: ''
+		newtodo: '',
+		visibility: 'done'
 	},
 	watch: {
 		todos: {
@@ -47,9 +79,15 @@ var app = new Vue({
 		// 	console.log('todos change');
 		// 	console.log(todos);
 		// 	console.log(old);
-         //    todoDb.save(todos);
-         //    console.log(todoDb.fetch());
+		//	todoDb.save(todos);
+		//	console.log(todoDb.fetch());
 		// }
+	},
+	computed: {
+		filteredTodos: function(){
+			// return filters.undone(this.todos);
+			return filters[this.visibility](this.todos);	//疑问
+		},
 	},
 	methods: {
 		addTodo: function(){
@@ -63,16 +101,18 @@ var app = new Vue({
 			this.todos.push({
 				id: todoDb.uid++,
 				title: value,
-				done: true
+				done: false
 			});
 			this.newtodo = '';
 			console.log(this.todos);
 			console.log(todoDb.fetch());
-
+			console.log(filters.undone(this.todos));
 		}
 	}
 });
 // app.$mount('.todovue');
+window.addEventListener('hashchange', filters.hashSet());
+filters.hashSet();
 
 
 
