@@ -66,7 +66,8 @@ var app = new Vue({
 	data: {
 		todos: todoDb.fetch(),
 		newtodo: '',
-		visibility: 'done'
+		visibility: 'done',
+		editTodo: null
 	},
 	watch: {
 		todos: {

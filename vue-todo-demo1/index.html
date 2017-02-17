@@ -29,7 +29,11 @@
 					<span>{{todo.title}}</span>
 					<button class="delete" v-on:click="delTodo(todo)">delete</button>
 				</div>
-				<input type="text" class="edit">
+				<input type="text" class="edit" 
+						v-model="todo.title" 
+						v-on:blur="doneEdit(todo)"
+						v-on:enter="doneEdit(todo)"
+						v-on:keyup.esc="cancelEdit(todo)">
 			</li>
 		</ul>
 	</section>
