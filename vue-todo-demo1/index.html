@@ -7,6 +7,12 @@
 	<title>vue-todo</title>
 	<!-- <script type="text/javascript" src="../vue.js"></script>
 	<script type="text/javascript" src="./app.js"></script> -->
+	<style type="text/css">
+		.show{display: inline-block;}
+		/*.edit{float: right;}*/
+		.edit{display: none;}
+		.todo:hover .edit{display: inline-block;}
+	</style>
 </head>
 <body>
 <section class="todovue">
@@ -30,10 +36,9 @@
 					<button class="delete" v-on:click="delTodo(todo)">delete</button>
 				</div>
 				<input type="text" class="edit" 
-						v-model="todo.title" 
-						v-on:blur="doneEdit(todo)"
-						v-on:enter="doneEdit(todo)"
-						v-on:keyup.esc="cancelEdit(todo)">
+						v-on:focus="focusEdit(todo)" 
+						v-on:blur="blurEdit(todo)"
+						v-model="todo.title">
 			</li>
 		</ul>
 	</section>

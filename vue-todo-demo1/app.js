@@ -67,7 +67,7 @@ var app = new Vue({
 		todos: todoDb.fetch(),
 		newtodo: '',
 		visibility: 'done',
-		editTodo: null
+		oldTodoTitle: null
 	},
 	watch: {
 		todos: {
@@ -136,6 +136,16 @@ var app = new Vue({
 		delDone: function(){
 			//过滤去掉已完成done选项，然后重新赋值给this.todos
 			this.todos = filters.undone(this.todos);
+		},
+		focusEdit: function(todo){
+			this.oldTodoTitle = todo.title;
+			console.log(this.oldTodoTitle);
+		},
+		blurEdit: function(todo){
+			todo.title = todo.title.trim();
+			if(!todo.title){
+				todo.title = this.oldTodoTitle;
+			}
 		}
 	}
 });
