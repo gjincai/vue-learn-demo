@@ -12,7 +12,7 @@
 <section class="todovue">
 	<h2>todo_vue</h2>
 	<header class="header">
-		<input type="checkbox" class="toggle-all">
+		<input type="checkbox" class="toggle-all" v-model="allDoneChange">
 		<input type="text"
 			   class="new-todo"
 			   autocomplete="off"
@@ -27,20 +27,20 @@
 				<div class="show">
 					<input type="checkbox" class="toggle-com" v-model="todo.done">
 					<span>{{todo.title}}</span>
-					<button class="delete">delete</button>
+					<button class="delete" v-on:click="delTodo(todo)">delete</button>
 				</div>
 				<input type="text" class="edit">
 			</li>
 		</ul>
 	</section>
 	<footer class="footer">
-		<span class="count"><strong>99</strong>todo left</span>
+		<span class="count"><strong>{{unDoneLeft}}</strong> todo left</span>
 	</footer>
 	<ul class="filter">
 		<li><a href="#/all">全部</a></li>
 		<li><a href="#/undone">未完成</a></li>
 		<li><a href="#/done">已完成</a></li>
-		<li><a href="javascript:;">删除已完成</a></li>
+		<li><a href="javascript:;" v-on:click="delDone" v-show="showDelDone">删除已完成</a></li>
 	</ul>
 </section>
 <script type="text/javascript" src="../vue-plug/vue.js"></script>

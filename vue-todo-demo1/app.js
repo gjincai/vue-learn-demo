@@ -88,6 +88,27 @@ var app = new Vue({
 			// return filters.undone(this.todos);
 			return filters[this.visibility](this.todos);	//疑问
 		},
+		unDoneLeft: function(){
+			return filters.undone(this.todos).length;
+		},
+		showDelDone: function(){
+			var undone = filters.undone(this.todos).length;
+			console.log(this.todos.length > undone);
+			return this.todos.length > undone;
+		},
+		allDoneChange: {	//此处get、set
+			get: function(){
+				console.log('get');
+				var undone = filters.undone(this.todos).length;
+				return undone === 0;
+			},
+			set: function(checkboxValue){
+				console.log('set:'+checkboxValue);	//true，false/选中状态
+				this.todos.forEach(function(todo){
+					todo.done = checkboxValue;
+				});
+			}
+		}
 	},
 	methods: {
 		addTodo: function(){
@@ -107,11 +128,18 @@ var app = new Vue({
 			console.log(this.todos);
 			console.log(todoDb.fetch());
 			console.log(filters.undone(this.todos));
+		},
+		delTodo: function(todo){
+			this.todos.splice(this.todos.indexOf(todo), 1);
+		},
+		delDone: function(){
+			//过滤去掉已完成done选项，然后重新赋值给this.todos
+			this.todos = filters.undone(this.todos);
 		}
 	}
 });
 // app.$mount('.todovue');
-window.addEventListener('hashchange', filters.hashSet());
+window.addEventListener('hashchange', filters.hashSet);	//filters.hashSet()写成这样，点击没效
 filters.hashSet();
 
 
