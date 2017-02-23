@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 	<title>vue-router</title>
 	<style type="text/css">
+		.routerVue a{display: block;}
+		.last-a{margin-bottom: 15px;}
 		.router-link-active{color:green;}
 	</style>
 </head>
@@ -14,6 +16,11 @@
 		<h4>router</h4>
 		<router-link to="/foo">Go to foo</router-link>
 		<router-link to="/bar">Go to bar</router-link>
+		<router-link to="/user">Go to user</router-link>
+		<router-link to="/user/t1">Go to user/t1</router-link>
+		<router-link to="/user/t2">Go to user/t2</router-link>
+		<router-link to="/find/evan/post/123">Go to find1</router-link>
+		<router-link to="/find/evan/post/234" class="last-a">Go to find2</router-link>
 		<router-view></router-view>
 	</div>
 	<script type="text/javascript" src="../vue-plug/vue.js"></script>
