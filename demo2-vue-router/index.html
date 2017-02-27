@@ -20,8 +20,20 @@
 		<router-link to="/user/t1">Go to user/t1</router-link>
 		<router-link to="/user/t2">Go to user/t2</router-link>
 		<router-link to="/find/evan/post/123">Go to find1</router-link>
-		<router-link to="/find/evan/post/234" class="last-a">Go to find2</router-link>
+		<router-link to="/find/evan/post/234">Go to find2</router-link>
+		<router-link :to="{ name:'namerouter', params:{ userId: 123 }}"  class="last-a">Name</router-link>
+
 		<router-view></router-view>
+	</div>
+
+	<div class="routerVue2">
+		<h4>routerVue2</h4>
+		<router-link to="/">/index</router-link>
+		<router-link to="/other">/other</router-link>
+
+		<router-view></router-view>
+		<router-view name="a"></router-view>
+		<router-view name="b"></router-view>
 	</div>
 	<script type="text/javascript" src="../vue-plug/vue.js"></script>
 	<script type="text/javascript" src="../vue-plug/vue-router.js"></script>
