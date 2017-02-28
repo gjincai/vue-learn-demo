@@ -5,6 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 	<title>vue-router</title>
+	<script type="text/javascript" src="../vue-plug/vue.js"></script>
+	<script type="text/javascript" src="../vue-plug/vue-router.js"></script>
+	
 	<style type="text/css">
 		.routerVue a{display: block;}
 		.last-a{margin-bottom: 15px;}
@@ -28,15 +31,14 @@
 
 	<div class="routerVue2">
 		<h4>routerVue2</h4>
-		<router-link to="/">/index</router-link>
+		<router-link to="/index">/index</router-link>
 		<router-link to="/other">/other</router-link>
 
-		<router-view></router-view>
-		<router-view name="a"></router-view>
-		<router-view name="b"></router-view>
+		<router-view class="view"></router-view>
+		<router-view class="view" name="a"></router-view>
+		<router-view class="view" name="b"></router-view>
 	</div>
-	<script type="text/javascript" src="../vue-plug/vue.js"></script>
-	<script type="text/javascript" src="../vue-plug/vue-router.js"></script>
+	
 	<script type="text/javascript" src="./app.js"></script>
 </body>
 </html>

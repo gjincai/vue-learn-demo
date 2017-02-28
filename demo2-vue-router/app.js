@@ -19,12 +19,12 @@ const routes = [
 	{ path: '/name/nameId', name: 'namerouter', component: Name}
 ]
 
-const router = new VueRouter({
+const router1 = new VueRouter({
 	routes
 })
 //渲染模板
 var app = new Vue({
-	router
+	router: router1
 }).$mount('.routerVue');
 
 
@@ -35,7 +35,7 @@ const Other2 = { template: '<div>Other2</div>' }
 const router2 = new VueRouter({
   // mode: 'history',
   routes: [
-    { path: '/',
+    { path: '/index',
       // a single route can define multiple named components
       // which will be rendered into <router-view>s with corresponding names.
       components: {
@@ -56,14 +56,8 @@ const router2 = new VueRouter({
 })
 
 var app2 = new Vue({
-	router2
+	router: router2
 }).$mount('.routerVue2');
-
-
-
-
-
-
 
 
 
